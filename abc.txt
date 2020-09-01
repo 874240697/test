@@ -1,0 +1,14 @@
+//486. Ô¤²âÓ®¼Ò
+var nums = [1, 5, 233, 7, 10];
+var PredictTheWinner = function (nums) {
+    function dfs(start, end) {
+        if(start === end){
+            return nums[start];
+        }
+        let num1 = nums[start] - dfs(start+ 1,end);
+        let num2 = nums[end] - dfs(start,end - 1);
+        return Math.max(num1,num2)
+    }
+    return dfs(0,nums.length - 1) >=0;
+};
+console.log(PredictTheWinner(nums));
